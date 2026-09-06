@@ -1,0 +1,13 @@
+services:
+  dsmr2mqtt:
+    build: .
+    restart: unless-stopped
+    # host networking so the container resolves mqtt.home and shares host DNS.
+    network_mode: host
+    # Use a stable /dev/serial/by-id/... path so a reboot can't swap the P1
+    # dongle with another USB serial device. Find it with: ls -l /dev/serial/by-id/
+    devices:
+      - "/dev/serial/by-id/CHANGE-ME-p1-dongle:/dev/ttyUSB0"
+    volumes:
+      - "./config.yml:/app/config.yml:ro"
+    command: ["config.yml"]

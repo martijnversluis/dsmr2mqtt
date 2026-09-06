@@ -1,0 +1,7 @@
+.git
+.github
+spec
+.rspec
+.rspec_status
+*.md
+config.yml
