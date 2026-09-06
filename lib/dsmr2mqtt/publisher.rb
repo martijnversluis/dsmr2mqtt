@@ -31,7 +31,7 @@ module Dsmr2mqtt
     attr_reader :mqtt_config, :topic_prefix
 
     def publish_json(topic, payload)
-      client.publish(topic, JSON.generate(payload), retain: true)
+      client.publish(topic, JSON.generate(payload), true)
     rescue ::MQTT::Exception, SystemCallError, IOError => e
       Dsmr2mqtt.logger.warn "MQTT publish failed (#{e.class}: #{e.message}); reconnecting next time"
       reset_client!

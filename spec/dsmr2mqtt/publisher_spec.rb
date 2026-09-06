@@ -25,7 +25,7 @@ RSpec.describe Dsmr2mqtt::Publisher do
     it "publishes a retained JSON message to the topic prefix" do
       publisher.publish(telegram)
 
-      expect(client).to have_received(:publish) do |topic, payload, retain:|
+      expect(client).to have_received(:publish) do |topic, payload, retain|
         expect(topic).to eq("home/p1")
         expect(retain).to be(true)
 
@@ -47,7 +47,7 @@ RSpec.describe Dsmr2mqtt::Publisher do
     it "publishes an alive message to the heartbeat topic" do
       publisher.publish_heartbeat
 
-      expect(client).to have_received(:publish) do |topic, payload, retain:|
+      expect(client).to have_received(:publish) do |topic, payload, retain|
         expect(topic).to eq("home/p1/heartbeat")
         expect(retain).to be(true)
         expect(JSON.parse(payload)).to include("alive" => true)
