@@ -1,8 +1,9 @@
 FROM ruby:3.4-slim
 
-# build-essential is needed to compile the ffi/rubyserial native extension.
+# build-essential compiles the ffi/rubyserial native extension; git is needed
+# because the gemspec enumerates files with `git ls-files`.
 RUN apt-get update -qq \
- && apt-get install -y --no-install-recommends build-essential \
+ && apt-get install -y --no-install-recommends build-essential git \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
