@@ -7,7 +7,8 @@ services:
     # Use a stable /dev/serial/by-id/... path so a reboot can't swap the P1
     # dongle with another USB serial device. Find it with: ls -l /dev/serial/by-id/
     devices:
-      - "/dev/serial/by-id/CHANGE-ME-p1-dongle:/dev/ttyUSB0"
+      # Set P1_DEVICE in a .env file to a stable /dev/serial/by-id/... path.
+      - "${P1_DEVICE:-/dev/serial/by-id/CHANGE-ME-p1-dongle}:/dev/ttyUSB0"
     volumes:
       - "./config.yml:/app/config.yml:ro"
     command: ["config.yml"]
