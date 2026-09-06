@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "dsmr2mqtt"
+
+if ARGV.first == "install"
+  Dsmr2mqtt.install!(ARGV[1])
+else
+  Dsmr2mqtt.run!(*ARGV)
+end

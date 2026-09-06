@@ -1,0 +1,13 @@
+serial:
+  port: /dev/ttyUSB0
+  baud: 115200
+
+mqtt:
+  host: mqtt.home
+  port: 1883
+  username: homy
+  password: secret
+  topic_prefix: home/p1
+
+# Publish a heartbeat at most once every N seconds.
+heartbeat_interval: 30
